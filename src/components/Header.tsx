@@ -1,12 +1,11 @@
 // Code for the Header component
-import React, { useContext } from 'react';
 import ConnectWallet from './ConnectWalletBtn';
 import { useAppContext } from '../context/appContext';
 import AccountBtn from './AccountBtn';
 import { NavLink } from "react-router";
 
 export default function Header() {
-    const { state, dispatch } = useAppContext();
+    const { state} = useAppContext();
 
     return (
         <header className=" py-4">

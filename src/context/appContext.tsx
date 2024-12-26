@@ -10,7 +10,7 @@ import futureCollection from '../assets/future-collections.png';
 import motherNature from '../assets/motherNature.png';
 import julienImage from '../assets/julien.png';
 import maria from '../assets/maria.png';
-import { Collection, NFT, Artist } from '../types';
+import { Collection, NFT } from '../types';
 
 
 type State = {

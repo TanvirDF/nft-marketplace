@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import TrendingNowSpan from './components/trendingNowSpan';
+import TrendingNowSpan from './components/TrendingNowSpan';
 import { useAppContext } from './context/appContext'
 import ArtistInfo from './components/ArtistInfo';
 import NftCard from './components/NftCard';

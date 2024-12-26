@@ -3,7 +3,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import SliderCard from './components/SliderCard'
 import CollectionCard from './components/CollectionCard'
-import Carousel from './components/Carousel'
+//import Carousel from './components/Carousel'
 import { useAppContext } from './context/appContext'
 
 
