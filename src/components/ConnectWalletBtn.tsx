@@ -1,7 +1,17 @@
 // Desc: Component to connect wallet
+
+import { useNavigate } from 'react-router';
+
+
 function ConnectWalletBtn() {
+
+    const nagivate = useNavigate();
+    const handleConnectWallet = () => {
+        nagivate('/wallet');
+    }
+
     return (  
-        <button className="rounded-[87px]  border-[1px] border-black w-[203px] h-[67px] px-[42px] py-[24px] text-[16px]">
+        <button onClick={handleConnectWallet} className="rounded-[5.4375em]  border-[1px] border-black w-[12.6875rem] h-[4.1875rem] px-10 py-5 font-semibold ">
             Connect Wallet
         </button>
     );

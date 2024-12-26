@@ -1,22 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Header from './components/Header'
-import Footer from './components/Footer'
-import SliderCard from './components/SliderCard'
+
+import { AppProvider } from './context/appContext'
+import HomePage from './HomePage'
+import { Routes, Route } from "react-router";
+import CollectionPage from './CollectionPage';
+ import WalletPage from './WalletPage';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
-    <>
-      <Header />
-      <main className="">
-        <SliderCard title='' artist='' imageSrc=''/>
-      </main>
-      <Footer />
-    </>
+    <AppProvider>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/collection/:title" element={<CollectionPage />} />
+        <Route path="/wallet" element={<WalletPage />} />
+      </Routes>
+    </AppProvider>
   )
 }
 

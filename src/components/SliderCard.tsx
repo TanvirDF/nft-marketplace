@@ -1,36 +1,53 @@
 import React from 'react';
-import Artist from './Artist';
+import ArtistInfo from './ArtistInfo';
 import BuyBtn from './BuyBtn';
 import SeeCollectionBtn from './SeeCollectionBtn';
-
-import artistImage from '../assets/artist1.png';
+import TrendingNowSpan from './trendingNowSpan';
+import nightSky from '../assets/NightSky.png';
+import { useNavigate } from "react-router";
+import { NFT } from '../types';
+import { useAppContext } from '../context/appContext';
 
 interface CardProps {
-  title: string;
-  artist: string;
-  imageSrc: string;
+    nft: NFT;
+    collection: string;
+    artist:{name: string, artistImage: string};
 }
 
-const SliderCard: React.FC<CardProps> = ({ title , artist, imageSrc }) => {
-    title = 'With the stars'
-  return (
-    <div className="bg-[#E6E9F2] rounded-lg p-6 flex items-center justify-between mx-6 ">
-      <div className=" flex flex-col items-start px-5">
-        <span className="text-[12px] bg-[#FADFE4]  px-[35px] py-[9px] rounded-full w-[150px] h-[33px] ">Trending Now</span>
-        <h3 className="text-gray-500 mt-4">Night sky collection</h3>
-        <h1 className="text-[64px] font-[800] text-start">{title}</h1>
-        <Artist artistName='Test Name' artistImageUrl={artistImage} />
-        <div className="mt-6 flex space-x-4 gap-[16px]">
-            <BuyBtn />
-            <SeeCollectionBtn/>    
-                  
-            {/* <button className="border border-gray-400 px-6 py-3 rounded-lg hover:bg-gray-200">See collection</button> */}
+const SliderCard: React.FC<CardProps> = ({ nft, artist, collection }) => {
+    
+    const { dispatch } = useAppContext();
+    const navigate = useNavigate();
+
+    const handleSeeCollectionClick = () => {
+        navigate(`/collection/${collection}`);
+    }
+
+    const handleBuyClick = () => {
+        dispatch({ type: 'add_nft', payload: nft });
+    }
+    
+    
+    return (
+      <>
+    <div className=" bg-[#E6E9F2]  rounded-[31px] p-14 flex items-center justify-between w-full">
+      <div className=" px-5">
+        <TrendingNowSpan />
+        <h3 className="text-gray-500 text-2xl mt-4 relative top-2">{ collection} collection</h3>
+        <h1 className="text-6xl font-extrabold text-start">{nft.nftTitle}</h1>
+        <ArtistInfo artistName={artist.name} artistImageUrl={artist.artistImage} />
+        <div className="mt-6 flex flex-row  gap-6 flex-shrink">
+            <BuyBtn handleBuyClick={handleBuyClick} />
+            <SeeCollectionBtn handleCollectionClick={handleSeeCollectionClick} />    
         </div>
       </div>
-      <div className="w-72 h-72">
-        <img src={imageSrc} alt="Artwork" className="w-full h-full object-cover rounded-lg" />
+      <div className=" w-[27.3125rem] h-[25.6875rem]   ">
+        <img src={nft.nftImage} alt="Artwork" className="w-full h-full rounded-[52px] object-cover" />
       </div>
     </div>
+      
+      </>
+
   );
 };
 
